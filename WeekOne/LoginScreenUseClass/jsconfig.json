@@ -7,14 +7,20 @@
       "~/*": [
         "./src/*"
       ],
-      "~screens": [
-        "./src/screens/index"
-      ],
       "~assets": [
         "./src/assets/index"
       ],
       "~components": [
         "./src/components/index"
+      ],
+      "~schema": [
+        "./src/schema/index"
+      ],
+      "~screens": [
+        "./src/screens/index"
+      ],
+      "~utils": [
+        "./src/utils/index"
       ]
     }
   },

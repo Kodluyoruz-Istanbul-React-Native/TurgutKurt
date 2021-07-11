@@ -11,16 +11,24 @@ module.exports = {
             rootPathSuffix: 'src',
           },
           {
-            rootPathPrefix: '~screens',
-            rootPathSuffix: 'src/screen/index',
-          },
-          {
             rootPathPrefix: '~assets',
             rootPathSuffix: 'src/assets/index',
           },
           {
             rootPathPrefix: '~components',
             rootPathSuffix: 'src/components/index',
+          },
+          {
+            rootPathPrefix: '~schema',
+            rootPathSuffix: 'src/schema/index',
+          },
+          {
+            rootPathPrefix: '~screens',
+            rootPathSuffix: 'src/screens/index',
+          },
+          {
+            rootPathPrefix: '~utils',
+            rootPathSuffix: 'src/utils/index',
           },
         ],
       },
