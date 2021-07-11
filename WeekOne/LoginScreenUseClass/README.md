@@ -2,7 +2,7 @@
 # React Native Example Login Screen
 
 Login Page made using formik and yup
-
+![Lorem Picsum](./src/assets/LoginScreen.png)
 ## Installation
  Clone the repo
    ```
