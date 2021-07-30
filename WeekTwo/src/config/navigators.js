@@ -3,8 +3,9 @@ export const mainStack = {
   home_tab: 'HomeTab',
 };
 export const homeTabs = {
-  tab1: 'Tab1',
-  tab2: 'Tab2',
-  tab3: 'Tab3',
-  tab4: 'Tab4',
+  feed: 'FeedScreen',
+  friends: 'FriendsScreen',
+  messages: 'MessagesScreen',
+  settings: 'SettingsScreen',
+  profile: 'ProfileScreen',
 };
