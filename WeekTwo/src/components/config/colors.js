@@ -6,5 +6,7 @@ const colors = {
   MainGray: '#707070',
   Black: '#000000',
   Yellow: '#FFCC00',
+  Pink: '#EE8777',
+  Gray: '#8A8A8F',
 };
 export {colors};

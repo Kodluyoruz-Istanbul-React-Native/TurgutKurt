@@ -1,5 +1,5 @@
 import React from 'react';
-import {homeTabs, mainStack} from '~/config/navigators';
+import {mainStack} from '~/config/navigators';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Loading} from '~/screens';
 import HomeTabs from './HomeTabs';

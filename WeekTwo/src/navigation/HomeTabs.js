@@ -8,23 +8,34 @@ import {
   SettingsScreen,
 } from '~/screens';
 import {Text, StyleSheet} from 'react-native';
-import {colors} from '~/components';
 import {homeTabs} from '~/config/navigators';
 const Tab = createMaterialBottomTabNavigator();
 import VectorImage from 'react-native-vector-image';
-import {Feed, FeedActive} from '~/assets';
+import {
+  Feed,
+  FeedActive,
+  Friends,
+  FriendsActive,
+  Messages,
+  MessagesActive,
+  Profile,
+  ProfileActive,
+  Settings,
+  SettingsActive,
+} from '~/assets';
+import {colors} from '~/components/config';
 const HomeTabs = () => {
   return (
     <Tab.Navigator
       shifting={false}
-      activeColor={colors.MainRed}
-      inactiveColor={colors.Black}
+      activeColor={colors.Pink}
+      inactiveColor={colors.Gray}
       barStyle={styles.barStyle}>
       <Tab.Screen
         name={homeTabs.feed}
         component={FeedScreen}
         options={{
-          tabBarLabel: <Text>Anasayfa</Text>,
+          tabBarLabel: <Text>Feed</Text>,
           tabBarIcon: ({focused}) => (
             <VectorImage
               style={styles.svgStyle}
@@ -37,11 +48,11 @@ const HomeTabs = () => {
         name={homeTabs.messages}
         component={MessagesScreen}
         options={{
-          tabBarLabel: <Text>Mesa</Text>,
+          tabBarLabel: <Text>Friends</Text>,
           tabBarIcon: ({focused}) => (
             <VectorImage
               style={styles.svgStyle}
-              source={focused ? FeedActive : Feed}
+              source={focused ? FriendsActive : Friends}
             />
           ),
         }}
@@ -50,11 +61,11 @@ const HomeTabs = () => {
         name={homeTabs.settings}
         component={SettingsScreen}
         options={{
-          tabBarLabel: <Text>frien</Text>,
+          tabBarLabel: <Text>Messages</Text>,
           tabBarIcon: ({focused}) => (
             <VectorImage
               style={styles.svgStyle}
-              source={focused ? FeedActive : Feed}
+              source={focused ? MessagesActive : Messages}
             />
           ),
         }}
@@ -63,11 +74,11 @@ const HomeTabs = () => {
         name={homeTabs.friends}
         component={FriendsScreen}
         options={{
-          tabBarLabel: <Text>ayar</Text>,
+          tabBarLabel: <Text>Setting</Text>,
           tabBarIcon: ({focused}) => (
             <VectorImage
               style={styles.svgStyle}
-              source={focused ? FeedActive : Feed}
+              source={focused ? SettingsActive : Settings}
             />
           ),
         }}
@@ -76,11 +87,11 @@ const HomeTabs = () => {
         name={homeTabs.profile}
         component={ProfileScreen}
         options={{
-          tabBarLabel: <Text>profil</Text>,
+          tabBarLabel: <Text>Profile</Text>,
           tabBarIcon: ({focused}) => (
             <VectorImage
               style={styles.svgStyle}
-              source={focused ? FeedActive : Feed}
+              source={focused ? ProfileActive : Profile}
             />
           ),
         }}
@@ -89,7 +100,7 @@ const HomeTabs = () => {
   );
 };
 const styles = StyleSheet.create({
-  barStyle: {backgroundColor: '#fff', height: 50},
-  svgStyle: {width: 16, height: 21},
+  barStyle: {backgroundColor: '#fff'},
+  svgStyle: {width: 24, height: 24},
 });
 export default HomeTabs;
