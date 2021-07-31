@@ -1,9 +1,12 @@
 import {StyleSheet} from 'react-native';
+import { calcWidth, fontSize } from "~/utils";
+import {colors, globalStyle} from '../config';
 const styles = StyleSheet.create({
-  headerWrapper: {
+  Container: {
+    ...globalStyle.fdr,
     height: 55,
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
+    backgroundColor: colors.MainWhite,
+    shadowColor: colors.Black,
     shadowOffset: {
       width: 0,
       height: 0,
@@ -11,9 +14,35 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 5,
-    justifyContent: 'space-around',
-    paddingHorizontal: 24,
+    ...globalStyle.jcsa,
   },
+  LeftView: {
+    width: calcWidth(30),
+    ...globalStyle.jcc,
+    paddingLeft: 20,
+  },
+  LeftButton: {
+    height:'100%',
+    ...globalStyle.jcc,
+    width: calcWidth(15),
+  },
+  CenterView: {width: calcWidth(40), ...globalStyle.jccaic},
+  CenterText: {fontSize:20,},
+  RightButton1: {
+    width: calcWidth(15),
+    ...globalStyle.fdr,
+    ...globalStyle.aic,
+    ...globalStyle.jcc,
+    paddingRight: 20,
+  },
+  RightButton2: {
+    width: calcWidth(15),
+    ...globalStyle.fdr,
+    ...globalStyle.aic,
+    ...globalStyle.jcc,
+    paddingRight: 20,
+  },
+  svgStyle: {width: fontSize(24), height: fontSize(24)},
 });
 
 export default styles;

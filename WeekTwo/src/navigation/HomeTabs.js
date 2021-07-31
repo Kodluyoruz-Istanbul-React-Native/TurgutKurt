@@ -24,6 +24,7 @@ import {
   SettingsActive,
 } from '~/assets';
 import {colors} from '~/components/config';
+import { fontSize } from "~utils";
 const HomeTabs = () => {
   return (
     <Tab.Navigator
@@ -101,6 +102,6 @@ const HomeTabs = () => {
 };
 const styles = StyleSheet.create({
   barStyle: {backgroundColor: '#fff'},
-  svgStyle: {width: 24, height: 24},
+  svgStyle: {width: fontSize(24), height: fontSize(24)},
 });
 export default HomeTabs;

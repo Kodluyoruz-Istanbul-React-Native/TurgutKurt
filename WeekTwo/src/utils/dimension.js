@@ -11,7 +11,7 @@ export const calculate = pix => {
   let value = fontRatio * pix;
   return (calcWidth(value) + calcHeight(value)) / 2;
 };
-export const fontSie = pix => {
+export const fontSize = pix => {
   let value = ratio * pix;
   return (calcWidth(value) + calcHeight(value)) / 2;
 };

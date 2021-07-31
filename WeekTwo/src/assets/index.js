@@ -9,6 +9,9 @@ import Profile from './svg/bottomTabBar/Profile.svg';
 import ProfileActive from './svg/bottomTabBar/ProfileActive.svg';
 import Settings from './svg/bottomTabBar/Settings.svg';
 import SettingsActive from './svg/bottomTabBar/SettingsActive.svg';
+import Dots from './svg/header/Dots.svg';
+import Photo from './svg/header/Photo.svg';
+import Plus from './svg/header/Plus.svg';
 
 export {
   loadingAnimation,
@@ -22,4 +25,7 @@ export {
   ProfileActive,
   Settings,
   SettingsActive,
+  Dots,
+  Photo,
+  Plus,
 };
