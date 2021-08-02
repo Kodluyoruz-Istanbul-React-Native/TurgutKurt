@@ -8,10 +8,12 @@ import {
   post2,
   EyesGray,
   Heart,
+  HeartClicked,
   Message,
 } from '~/assets';
 import VectorImage from 'react-native-vector-image';
 const Post = () => {
+  const [clicked, setClicked] = useState(false);
   const data = [
     {
       name: 'Carly Jane',
@@ -60,8 +62,10 @@ const Post = () => {
             <Text style={styles.LeftText}>4511</Text>
           </View>
           <View style={styles.BottomRightView}>
-            <TouchableOpacity style={styles.BottomRightButton}>
-              <VectorImage source={Heart} />
+            <TouchableOpacity
+              style={styles.BottomRightButton}
+              onPress={() => setClicked(!clicked)}>
+              <VectorImage source={clicked ? HeartClicked : Heart} />
               <Text style={styles.LeftText}>24</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.BottomRightButton}>
