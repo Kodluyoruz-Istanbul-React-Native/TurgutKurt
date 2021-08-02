@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     ...globalStyle.jcc,
     paddingRight: 20,
   },
-  svgStyle: {width: fontSize(24), height: fontSize(24)},
+  Svg: {width: fontSize(24), height: fontSize(24)},
 });
 
 export default styles;

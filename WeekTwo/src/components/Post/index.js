@@ -44,14 +44,22 @@ const Post = () => {
     return (
       <View style={styles.RenderCardView}>
         <View style={styles.TopView}>
-          <TouchableOpacity style={styles.ProfileButton}>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('profile button pressed');
+            }}
+            style={styles.ProfileButton}>
             <Image style={styles.RenderProfileImage} source={item.profileImg} />
             <View style={styles.NameAndTagView}>
               <Text style={styles.NameText}>{item.name}</Text>
               <Text style={styles.TagText}>{item.tag}</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.DotsButton}>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('dots button pressed');
+            }}
+            style={styles.DotsButton}>
             <VectorImage source={DotsGray} />
           </TouchableOpacity>
         </View>
@@ -64,11 +72,18 @@ const Post = () => {
           <View style={styles.BottomRightView}>
             <TouchableOpacity
               style={styles.BottomRightButton}
-              onPress={() => setClicked(!clicked)}>
+              onPress={() => {
+                console.log('like button pressed');
+                setClicked(!clicked);
+              }}>
               <VectorImage source={clicked ? HeartClicked : Heart} />
               <Text style={styles.LeftText}>24</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.BottomRightButton}>
+            <TouchableOpacity
+              onPress={() => {
+                console.log('comment button pressed');
+              }}
+              style={styles.BottomRightButton}>
               <VectorImage source={Message} />
               <Text style={styles.LeftText}>11</Text>
             </TouchableOpacity>
@@ -79,7 +94,6 @@ const Post = () => {
   };
   return (
     <FlatList
-      style={styles.FlatList}
       data={data}
       renderItem={renderUser}
       keyExtractor={(item, index) => index.toString()}

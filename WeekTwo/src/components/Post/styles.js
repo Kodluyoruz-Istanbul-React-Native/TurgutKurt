@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 import {colors, globalStyle} from '~/components/config';
 import {calcHeight, calculate, calcWidth, fontSize} from '~/utils';
 const styles = StyleSheet.create({
-  FlatList: {paddingBottom: 70},
   RenderCardView: {
     width: calcWidth(100) - 40,
     ...globalStyle.asc,

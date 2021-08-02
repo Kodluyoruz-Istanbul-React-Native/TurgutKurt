@@ -1,6 +1,6 @@
+// globalStyle system
 import {StyleSheet} from 'react-native';
 import {calculate, calcWidth} from '~utils';
-
 const globalStyle = StyleSheet.create({
   posRel: {
     position: 'relative',
