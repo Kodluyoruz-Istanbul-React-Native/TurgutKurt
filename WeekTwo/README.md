@@ -1,6 +1,8 @@
-# React Native Example Login Screen
+# React Native Example Navigation
 
-Login Page made using formik and yup
+React navigation is used the in this project
+
+
 
 ![Lorem Picsum](./src/assets/gif/weektwo.gif)
 
