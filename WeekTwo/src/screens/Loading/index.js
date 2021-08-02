@@ -10,7 +10,7 @@ const Loading = () => {
   useEffect(() => {
     setTimeout(async () => {
       navigation.navigate(mainStack.home_tab);
-    }, 5000);
+    }, 3000);
   }, []);
   return (
     <View style={styles.wrapper}>
