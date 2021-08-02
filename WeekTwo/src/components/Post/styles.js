@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     ...globalStyle.aic,
     ...globalStyle.fdr,
   },
-  LeftText: {paddingLeft: 10, fontSize: fontSize(11)},
+  SvgText: {paddingLeft: 10, fontSize: fontSize(11)},
   BottomRightView: {
     width: '50%',
     ...globalStyle.fdr,

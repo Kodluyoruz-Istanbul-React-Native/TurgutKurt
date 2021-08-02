@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FlatList, View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {
@@ -8,12 +8,38 @@ import {
   post2,
   EyesGray,
   Heart,
-  HeartClicked,
   Message,
 } from '~/assets';
 import VectorImage from 'react-native-vector-image';
-const Post = () => {
-  const [clicked, setClicked] = useState(false);
+import {ViewPropTypes, PropTypes} from '../config';
+const Post = props => {
+  const {
+    RenderCardViewStyle,
+    TopViewStyle,
+    onPressProfile,
+    ProfileButtonStyle,
+    RenderProfileImageStyle,
+    NameAndTagViewStyle,
+    NameTextStyle,
+    TagTextStyle,
+    onPressDots,
+    DotsButtonStyle,
+    TopRightSvg,
+    RenderImageStyle,
+    BottomViewStyle,
+    BottomLeftViewStyle,
+    SvgTextStyle,
+    BottomLeftSvg,
+    BottomLeftText,
+    BottomRightViewStyle,
+    BottomRightButtonStyle,
+    onPressLike,
+    BottomRightSvg1,
+    BottomFavoriteText,
+    onPressMessage,
+    BottomRightSvg2,
+    BottomMessageText,
+  } = props;
   const data = [
     {
       name: 'Carly Jane',
@@ -42,50 +68,51 @@ const Post = () => {
   ];
   const renderUser = ({item, index}) => {
     return (
-      <View style={styles.RenderCardView}>
-        <View style={styles.TopView}>
+      <View style={[styles.RenderCardView, RenderCardViewStyle]}>
+        <View style={[styles.TopView, TopViewStyle]}>
           <TouchableOpacity
-            onPress={() => {
-              console.log('profile button pressed');
-            }}
-            style={styles.ProfileButton}>
-            <Image style={styles.RenderProfileImage} source={item.profileImg} />
-            <View style={styles.NameAndTagView}>
-              <Text style={styles.NameText}>{item.name}</Text>
-              <Text style={styles.TagText}>{item.tag}</Text>
+            onPress={onPressProfile}
+            style={[styles.ProfileButton, ProfileButtonStyle]}>
+            <Image
+              style={[styles.RenderProfileImage, RenderProfileImageStyle]}
+              source={item.profileImg}
+            />
+            <View style={[styles.NameAndTagView, NameAndTagViewStyle]}>
+              <Text style={[styles.NameText, NameTextStyle]}>{item.name}</Text>
+              <Text style={[styles.TagText, TagTextStyle]}>{item.tag}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {
-              console.log('dots button pressed');
-            }}
-            style={styles.DotsButton}>
-            <VectorImage source={DotsGray} />
+            onPress={onPressDots}
+            style={[styles.DotsButton, DotsButtonStyle]}>
+            <VectorImage source={TopRightSvg} />
           </TouchableOpacity>
         </View>
-        <Image style={styles.RenderImage} source={item.img} />
-        <View style={styles.BottomView}>
-          <View style={styles.BottomLeftView}>
-            <VectorImage source={EyesGray} />
-            <Text style={styles.LeftText}>4511</Text>
+        <Image
+          style={[styles.RenderImage, RenderImageStyle]}
+          source={item.img}
+        />
+        <View style={[styles.BottomView, BottomViewStyle]}>
+          <View style={[styles.BottomLeftView, BottomLeftViewStyle]}>
+            <VectorImage source={BottomLeftSvg} />
+            <Text style={[styles.SvgText, SvgTextStyle]}>{BottomLeftText}</Text>
           </View>
-          <View style={styles.BottomRightView}>
+          <View style={[styles.BottomRightView, BottomRightViewStyle]}>
             <TouchableOpacity
-              style={styles.BottomRightButton}
-              onPress={() => {
-                console.log('like button pressed');
-                setClicked(!clicked);
-              }}>
-              <VectorImage source={clicked ? HeartClicked : Heart} />
-              <Text style={styles.LeftText}>24</Text>
+              onPress={onPressLike}
+              style={[styles.BottomRightButton, BottomRightButtonStyle]}>
+              <VectorImage source={BottomRightSvg1} />
+              <Text style={[styles.SvgText, SvgTextStyle]}>
+                {BottomFavoriteText}
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => {
-                console.log('comment button pressed');
-              }}
-              style={styles.BottomRightButton}>
-              <VectorImage source={Message} />
-              <Text style={styles.LeftText}>11</Text>
+              onPress={onPressMessage}
+              style={[styles.BottomRightButton, BottomRightButtonStyle]}>
+              <VectorImage source={BottomRightSvg2} />
+              <Text style={[styles.SvgText, SvgTextStyle]}>
+                {BottomMessageText}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -99,5 +126,44 @@ const Post = () => {
       keyExtractor={(item, index) => index.toString()}
     />
   );
+};
+Post.propTypes = {
+  RenderCardViewStyle: ViewPropTypes.style,
+  TopViewStyle: ViewPropTypes.style,
+  onPressProfile: PropTypes.func,
+  ProfileButtonStyle: ViewPropTypes.style,
+  RenderProfileImageStyle: Image.propTypes.style,
+  NameAndTagViewStyle: ViewPropTypes.style,
+  NameTextStyle: Text.propTypes.style,
+  TagTextStyle: Text.propTypes.style,
+  onPressDots: PropTypes.func,
+  DotsButtonStyle: ViewPropTypes.style,
+  TopRightSvg: PropTypes.number,
+  RenderImageStyle: Image.propTypes.style,
+  BottomViewStyle: ViewPropTypes.style,
+  BottomLeftViewStyle: ViewPropTypes.style,
+  BottomLeftSvg: PropTypes.number,
+  SvgTextStyle: Text.propTypes.style,
+  BottomLeftText: PropTypes.string,
+  BottomRightViewStyle: ViewPropTypes.style,
+  BottomRightButtonStyle: ViewPropTypes.style,
+  BottomRightSvg1: PropTypes.number,
+  BottomFavoriteText: Text.propTypes.style,
+  onPressMessage: PropTypes.func,
+  BottomRightSvg2: PropTypes.number,
+  BottomMessageText: Text.propTypes.style,
+};
+Post.defaultProps = {
+  onPressProfile: () => console.log('onPressProfile basıldı.'),
+  onPressDots: () => console.log('onPressDots basıldı.'),
+  TopRightSvg: DotsGray,
+  BottomLeftSvg: EyesGray,
+  BottomLeftText: '4511',
+  onPressLike: () => console.log('onPressLike basıldı.'),
+  BottomRightSvg1: Heart,
+  BottomFavoriteText: '24',
+  onPressMessage: () => console.log('onPressRight2 basıldı.'),
+  BottomRightSvg2: Message,
+  BottomMessageText: '16',
 };
 export default Post;
