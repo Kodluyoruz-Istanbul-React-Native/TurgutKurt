@@ -51,6 +51,7 @@ const globalStyle = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
   },
+  tac: {textAlign: 'center'},
   fdr: {
     flexDirection: 'row',
   },

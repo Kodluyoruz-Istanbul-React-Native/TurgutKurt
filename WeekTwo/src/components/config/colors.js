@@ -8,5 +8,7 @@ const colors = {
   Yellow: '#FFCC00',
   Pink: '#EE8777',
   Gray: '#8A8A8F',
+  NewGray: '#ABA9A7',
+  BackColor: '#F5F5F5',
 };
 export {colors};

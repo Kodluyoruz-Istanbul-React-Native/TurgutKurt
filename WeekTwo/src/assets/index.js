@@ -12,6 +12,9 @@ import SettingsActive from './svg/bottomTabBar/SettingsActive.svg';
 import Dots from './svg/header/Dots.svg';
 import Photo from './svg/header/Photo.svg';
 import Plus from './svg/header/Plus.svg';
+import human from './images/human.png';
+import post1 from './images/Posts/1.jpg';
+import post2 from './images/Posts/2.jpg';
 
 export {
   loadingAnimation,
@@ -28,4 +31,7 @@ export {
   Dots,
   Photo,
   Plus,
+  human,
+  post1,
+  post2,
 };

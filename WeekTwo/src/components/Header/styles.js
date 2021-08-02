@@ -4,7 +4,7 @@ import {colors, globalStyle} from '../config';
 const styles = StyleSheet.create({
   Container: {
     ...globalStyle.fdr,
-    height: 55,
+    height: fontSize(55),
     backgroundColor: colors.MainWhite,
     shadowColor: colors.Black,
     shadowOffset: {
@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   LeftButton: {
-    height:'100%',
+    height: '100%',
     ...globalStyle.jcc,
     width: calcWidth(15),
   },
   CenterView: {width: calcWidth(40), ...globalStyle.jccaic},
-  CenterText: {fontSize:20,},
+  CenterText: {fontSize: fontSize(20)},
   RightButton1: {
     width: calcWidth(15),
     ...globalStyle.fdr,
