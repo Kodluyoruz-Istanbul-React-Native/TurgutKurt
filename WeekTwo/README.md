@@ -17,7 +17,8 @@ git clone https://github.com/Kodluyoruz-Istanbul-React-Native/TurgutKurt.git
 After cloning the project, open it in Visual Studio Code.
 
 ```
-cd TurgutKurt/WeekOne/LoginScreenUseClass && code .
+cd TurgutKurt/WeekTwo && code .
+
 ```
 
 Install all the dependencies of the project.
