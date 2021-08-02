@@ -14,6 +14,7 @@ import VectorImage from 'react-native-vector-image';
 import {ViewPropTypes, PropTypes} from '../config';
 const Post = props => {
   const {
+    postData,
     RenderCardViewStyle,
     TopViewStyle,
     onPressProfile,
@@ -40,32 +41,6 @@ const Post = props => {
     BottomRightSvg2,
     BottomMessageText,
   } = props;
-  const data = [
-    {
-      name: 'Carly Jane',
-      tag: '@carlyj',
-      img: post1,
-      profileImg: human,
-    },
-    {
-      name: 'Miranda West',
-      tag: '@mirandw',
-      img: post2,
-      profileImg: human,
-    },
-    {
-      name: 'Carly Jane',
-      tag: '@carlyj',
-      img: post1,
-      profileImg: human,
-    },
-    {
-      name: 'Miranda West',
-      tag: '@mirandw',
-      img: post2,
-      profileImg: human,
-    },
-  ];
   const renderUser = ({item, index}) => {
     return (
       <View style={[styles.RenderCardView, RenderCardViewStyle]}>
@@ -121,13 +96,14 @@ const Post = props => {
   };
   return (
     <FlatList
-      data={data}
+      data={postData}
       renderItem={renderUser}
       keyExtractor={(item, index) => index.toString()}
     />
   );
 };
 Post.propTypes = {
+  postData: PropTypes.array,
   RenderCardViewStyle: ViewPropTypes.style,
   TopViewStyle: ViewPropTypes.style,
   onPressProfile: PropTypes.func,
@@ -154,6 +130,32 @@ Post.propTypes = {
   BottomMessageText: Text.propTypes.style,
 };
 Post.defaultProps = {
+  postData: [
+    {
+      name: 'Carly Jane',
+      tag: '@carlyj',
+      img: post1,
+      profileImg: human,
+    },
+    {
+      name: 'Miranda West',
+      tag: '@mirandw',
+      img: post2,
+      profileImg: human,
+    },
+    {
+      name: 'Carly Jane',
+      tag: '@carlyj',
+      img: post1,
+      profileImg: human,
+    },
+    {
+      name: 'Miranda West',
+      tag: '@mirandw',
+      img: post2,
+      profileImg: human,
+    },
+  ],
   onPressProfile: () => console.log('onPressProfile basıldı.'),
   onPressDots: () => console.log('onPressDots basıldı.'),
   TopRightSvg: DotsGray,

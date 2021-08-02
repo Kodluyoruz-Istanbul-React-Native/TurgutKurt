@@ -2,8 +2,52 @@ import React, {Component} from 'react';
 import {FlatList, View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {human} from '~/assets';
-const Story = () => {
-  const data = [
+import {ViewPropTypes, PropTypes} from '../config';
+
+const Story = props => {
+  const {
+    ListViewStyle,
+    storyData,
+    onPressCard,
+    RenderCardViewStyle,
+    RenderImageStyle,
+    RenderTextStyle,
+  } = props;
+  const renderUser = ({item, index}) => {
+    return (
+      <TouchableOpacity
+        onPress={onPressCard}
+        style={[styles.RenderCardView, RenderCardViewStyle]}>
+        <Image
+          style={[styles.RenderImage, RenderImageStyle]}
+          source={item.img}
+        />
+        <Text style={[styles.RenderText, RenderTextStyle]}>{item.name}</Text>
+      </TouchableOpacity>
+    );
+  };
+  return (
+    <View style={[styles.ListView, ListViewStyle]}>
+      <FlatList
+        horizontal
+        data={storyData}
+        renderItem={renderUser}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    </View>
+  );
+};
+Story.propTypes = {
+  ListViewStyle: ViewPropTypes.style,
+  storyData: PropTypes.array,
+  onPressCard: PropTypes.func,
+  RenderCardViewStyle: ViewPropTypes.style,
+  RenderImageStyle: Image.propTypes.style,
+  RenderTextStyle: Text.propTypes.style,
+};
+Story.defaultProps = {
+  onPressCard: () => console.log('onPressCard basıldı.'),
+  storyData: [
     {
       name: 'Alex',
       img: human,
@@ -32,24 +76,6 @@ const Story = () => {
       name: 'Jessica',
       img: human,
     },
-  ];
-  const renderUser = ({item, index}) => {
-    return (
-      <TouchableOpacity style={styles.RenderCardView}>
-        <Image style={styles.RenderImage} source={item.img} />
-        <Text style={styles.RenderText}>{item.name}</Text>
-      </TouchableOpacity>
-    );
-  };
-  return (
-    <View style={styles.List}>
-      <FlatList
-        horizontal
-        data={data}
-        renderItem={renderUser}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </View>
-  );
+  ],
 };
 export default Story;

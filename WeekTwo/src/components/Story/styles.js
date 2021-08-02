@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {colors, globalStyle} from '~/components/config';
 import {calcWidth, fontSize} from '~/utils';
 const styles = StyleSheet.create({
-  List: {paddingHorizontal: 20, paddingVertical: 10},
+  ListView: {paddingHorizontal: 20, paddingVertical: 10},
   RenderCardView: {height: calcWidth(20), marginRight: 10},
   RenderImage: {
     width: calcWidth(12.2),
