@@ -1,12 +1,16 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Header, Story} from '~/components';
+import {FlatList, View} from 'react-native';
+import {Header, Story, Post} from '~/components';
 import styles from './styles';
 const FeedScreen = () => {
   return (
     <View style={styles.Container}>
       <Header />
-      <Story />
+      <FlatList
+        ListHeaderComponent={() => <Story />}
+        data={[{key: '1'}]}
+        renderItem={() => <Post />}
+      />
     </View>
   );
 };

@@ -65,7 +65,7 @@ const HomeTabs = () => {
           tabBarLabel: <Text>Messages</Text>,
           tabBarIcon: ({focused}) => (
             <VectorImage
-              style={styles.svgStyle}
+              style={[styles.svgStyle, {backgroundColor: 'red'}]}
               source={focused ? MessagesActive : Messages}
             />
           ),

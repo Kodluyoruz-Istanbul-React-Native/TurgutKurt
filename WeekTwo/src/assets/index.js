@@ -15,6 +15,11 @@ import Plus from './svg/header/Plus.svg';
 import human from './images/human.png';
 import post1 from './images/Posts/1.jpg';
 import post2 from './images/Posts/2.jpg';
+import DotsGray from './svg/post/DotsGray.svg';
+import EyesGray from './svg/post/EyesGray.svg';
+import Heart from './svg/post/Heart.svg';
+import HeartClicked from './svg/post/HeartClicked.svg';
+import Message from './svg/post/Message.svg';
 
 export {
   loadingAnimation,
@@ -34,4 +39,9 @@ export {
   human,
   post1,
   post2,
+  DotsGray,
+  EyesGray,
+  Heart,
+  HeartClicked,
+  Message,
 };
