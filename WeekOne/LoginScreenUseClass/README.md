@@ -10,13 +10,15 @@ Login Page made using formik and yup
    git clone https://github.com/Kodluyoruz-Istanbul-React-Native/TurgutKurt.git
    ```
 ## Usage
-After cloning the project, open it in Visual Studio Code.
+1.After cloning the project, open it in Visual Studio Code.
+
 
 ```
 cd TurgutKurt/WeekOne/LoginScreenUseClass && code .
 ```
 
-Install all the dependencies of the project.
+2.Install all the dependencies of the project.
+
 
 ```
 yarn install
@@ -26,7 +28,8 @@ or
 ```
 npm install
 ```
-Run this project.
+3.Run this project.
+
 
 ```
 yarn android
