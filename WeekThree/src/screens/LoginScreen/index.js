@@ -1,78 +1,69 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, Image} from 'react-native';
-import {Formik, Field} from 'formik';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {TextInput, View, Text, TouchableOpacity} from 'react-native';
+import {Formik} from 'formik';
+import {LoginValidationSchema} from '~/schema';
 import styles from './styles';
-import {colors, CustomInput, SafeStatusView} from '~components';
-import {loginlogo} from '~assets';
-import {LoginValidationSchema} from '~schema';
+import {colors} from '~/components/config';
 const LoginScreen = () => {
-  _handleSubmit = async values => {
-    console.log(values);
-  };
   return (
-    <SafeStatusView
-      statusBackColor={colors.MainWhite}
-      statusBarStyle={'dark-content'}
-      safeStyle={{backgroundColor: colors.MainWhite}}
-      content={
-        <KeyboardAwareScrollView style={[styles.container]}>
-          <View style={styles.TopViewStyle}>
-            <Image source={loginlogo} style={styles.imageStyle} />
-          </View>
-          <Text style={styles.welcomeText}>Hoşgeldiniz</Text>
-          <Formik
-            validateOnMount={true}
-            validationSchema={LoginValidationSchema}
-            initialValues={{
-              userName: '',
-              password: '',
-            }}
-            onSubmit={this._handleSubmit}>
-            {({handleSubmit, isValid}) => (
-              <>
-                <View style={styles.inputViewStyle}>
-                  <Field
-                    component={CustomInput}
-                    name="userName"
-                    placeholder="Kullanıcı Adı"
-                    placeholderTextColor="#8E9092"
-                  />
-                </View>
-                <View style={styles.inputViewStyle}>
-                  <Field
-                    component={CustomInput}
-                    name="password"
-                    placeholder="Şifre"
-                    placeholderTextColor="#8E9092"
-                    maxLength={12}
-                    secureTextEntry={true}
-                  />
-                </View>
-                <View style={styles.inputViewStyle}>
-                  <TouchableOpacity
-                    style={
-                      !isValid
-                        ? styles.DisableButton
-                        : [
-                            styles.DisableButton,
-                            {backgroundColor: colors.MainPink},
-                          ]
-                    }
-                    disabled={!isValid}
-                    onPress={handleSubmit}>
-                    <Text style={styles.ButtonText}>GİRİŞ YAP</Text>
-                  </TouchableOpacity>
-                </View>
-              </>
-            )}
-          </Formik>
-          <View style={styles.freeStyle2}>
-            <View style={styles.lineStyle} />
-          </View>
-        </KeyboardAwareScrollView>
-      }
-    />
+    <Formik
+      validationSchema={LoginValidationSchema}
+      initialValues={{email: '', password: ''}}
+      onSubmit={values => console.log(values)}>
+      {({handleChange, handleBlur, handleSubmit, values, errors, isValid}) => (
+        <View style={styles.Container}>
+          <TextInput
+            name="email"
+            placeholder="E-mail"
+            style={[
+              styles.textInput,
+              values.email === ''
+                ? styles.textInput
+                : errors.email
+                ? styles.textInputExStyle1
+                : styles.textInputExStyle2,
+            ]}
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
+            value={values.email}
+            keyboardType="email-address"
+          />
+          {errors.email && (
+            <Text style={styles.ErrorTextStyle}>{errors.email}</Text>
+          )}
+          <TextInput
+            name="password"
+            placeholder="Şifre"
+            style={[
+              styles.textInput,
+              values.password === ''
+                ? styles.textInput
+                : errors.password
+                ? styles.textInputExStyle1
+                : styles.textInputExStyle2,
+            ]}
+            onChangeText={handleChange('password')}
+            onBlur={handleBlur('password')}
+            value={values.password}
+            secureTextEntry
+          />
+          {errors.password && (
+            <Text style={styles.ErrorTextStyle}>{errors.password}</Text>
+          )}
+          <TouchableOpacity
+            style={[
+              styles.ButtonStyle,
+              isValid
+                ? {backgroundColor: colors.MainPink}
+                : {backgroundColor: 'gray'},
+            ]}
+            onPress={handleSubmit}
+            disabled={!isValid}>
+            <Text style={styles.ButtonTextStyle}>Giriş Yap</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+    </Formik>
   );
 };
 export default LoginScreen;

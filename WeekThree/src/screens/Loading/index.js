@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {loadingAnimation} from '~/assets';
 import {useNavigation} from '@react-navigation/native';
