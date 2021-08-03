@@ -9,7 +9,7 @@ const Loading = () => {
   const navigation = useNavigation();
   useEffect(() => {
     setTimeout(async () => {
-      navigation.navigate(mainStack.home_tab);
+      navigation.navigate(mainStack.login);
     }, 3000);
   }, []);
   return (

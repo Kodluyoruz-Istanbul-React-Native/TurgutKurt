@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {calcWidth, calcHeight} from '~utils';
 import {colors, globalStyle} from '~components';
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: colors.MainWhite},
+  container: {flex: 1, backgroundColor: '#fff'},
   TopViewStyle: {
     marginTop: calcHeight(4),
     width: calcWidth(100),
