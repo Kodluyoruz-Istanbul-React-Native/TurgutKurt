@@ -20,6 +20,7 @@ import EyesGray from './svg/post/EyesGray.svg';
 import Heart from './svg/post/Heart.svg';
 import HeartClicked from './svg/post/HeartClicked.svg';
 import Message from './svg/post/Message.svg';
+import loginlogo from './images/loginlogo.png';
 
 export {
   loadingAnimation,
