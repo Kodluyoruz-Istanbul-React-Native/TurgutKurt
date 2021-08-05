@@ -1,8 +1,8 @@
 import React from 'react';
 import {mainStack} from '~/config/navigators';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Loading, LoginScreen} from '~/screens';
 import HomeTabs from './HomeTabs';
+import {Loading, LoginScreen} from '~/screens';
 const Stack = createStackNavigator();
 const MainStack = () => {
   return (

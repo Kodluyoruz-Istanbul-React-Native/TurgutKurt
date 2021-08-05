@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "369320944396",
+    "project_id": "kodluyoruz-7e1b5",
+    "storage_bucket": "kodluyoruz-7e1b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369320944396:android:2e5f5d21c82837d7249f29",
+        "android_client_info": {
+          "package_name": "com.weekthree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369320944396-3hqqfvk0le633hm984k460va2hj5ts7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA-X1Rsckc_Un0qi4hrXBNxNC6nQwZIX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369320944396-3hqqfvk0le633hm984k460va2hj5ts7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

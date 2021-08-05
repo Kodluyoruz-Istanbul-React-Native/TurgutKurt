@@ -4,12 +4,14 @@ import {Formik} from 'formik';
 import {LoginValidationSchema} from '~/schema';
 import styles from './styles';
 import {colors} from '~/components/config';
-const LoginScreen = () => {
+const LoginScreen = props => {
   return (
     <Formik
       validationSchema={LoginValidationSchema}
       initialValues={{email: '', password: ''}}
-      onSubmit={values => console.log(values)}>
+      onSubmit={async values => {
+        console.log(values);
+      }}>
       {({handleChange, handleBlur, handleSubmit, values, errors, isValid}) => (
         <View style={styles.Container}>
           <TextInput
