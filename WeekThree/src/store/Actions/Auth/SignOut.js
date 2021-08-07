@@ -5,8 +5,8 @@ export const SignOut = () => {
   return async dispatch => {
     dispatch(fetchingRequest(signOut.SIGN_OUT_PENDING));
     try {
-      await auth().signOut();
-      await dispatch(fetchingSuccess(signOut.SIGN_OUT_FULFILLED, response));
+       await auth().signOut();
+       await dispatch(fetchingSuccess(signOut.SIGN_OUT_FULFILLED, 'başarılı'));
     } catch (error) {
       dispatch(fetchingFailure(signOut.SIGN_OUT_REJECTED, error));
     }

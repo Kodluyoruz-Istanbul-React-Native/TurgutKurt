@@ -6,7 +6,7 @@ export default function SignOut(state = initialState, action) {
     case signOut.SIGN_OUT_PENDING:
       return {...state, loading: true, data: null, error: null};
     case signOut.SIGN_OUT_FULFILLED:
-      return {...state, loading: false, data: payload, error: null};
+      return {...state, loading: false, data: null, error: null};
     case signOut.SIGN_OUT_REJECTED:
       return {
         ...state,
