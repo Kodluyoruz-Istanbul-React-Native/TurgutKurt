@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   TextInput,
   View,
@@ -13,6 +13,8 @@ import styles from './styles';
 import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
 import {SignUp} from '~/store/Actions';
+import NavigationService from '~/utils/navigation';
+import {mainStack} from '~/config/navigators';
 //component
 const RegisterScreen = props => {
   //selected field from global state
@@ -20,6 +22,8 @@ const RegisterScreen = props => {
   const error = useSelector(state => state.SignUpReducer.error);
   //dispatch
   const dispatch = useDispatch();
+  //local state
+  const [isloading, setIsloading] = useState(false);
   //global store
   const store = useStore();
   //toast ref
@@ -29,8 +33,8 @@ const RegisterScreen = props => {
     modalToastRef.current.show({
       type: err ? 'error' : 'success',
       position: err ? 'bottom' : 'top',
-      text1: err ? 'Hata' : 'Başarılı',
-      text2: err ? err : 'Kayıt işlemi başarıyla gerçekleştirildi.',
+      text1: err ? 'Error!' : 'Successful',
+      text2: err ? err : 'Register done successfully.',
       visibilityTime: 2500,
       autoHide: true,
       bottomOffset: 40,
@@ -38,9 +42,15 @@ const RegisterScreen = props => {
   };
   //submit func
   const _handleSubmit = async values => {
+    setIsloading(true);
     await dispatch(SignUp(values));
     const e = store.getState().SignUpReducer.error;
     globalToast(e);
+    //navigation
+    setTimeout(() => {
+      setIsloading(false);
+      NavigationService.navigate(mainStack.home_tab);
+    }, 2000);
   };
   return (
     <Formik
@@ -123,7 +133,7 @@ const RegisterScreen = props => {
           {errors.password && (
             <Text style={styles.ErrorTextStyle}>{errors.password}</Text>
           )}
-          {loading ? (
+          {isloading ? (
             <ActivityIndicator size="large" color={colors.MainPink} />
           ) : (
             <TouchableOpacity

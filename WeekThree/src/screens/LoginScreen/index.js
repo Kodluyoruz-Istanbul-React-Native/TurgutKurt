@@ -13,7 +13,6 @@ import styles from './styles';
 import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
 import {SignIn} from '~/store/Actions';
-import {useNavigation} from '@react-navigation/native';
 import {mainStack} from '~/config/navigators';
 import NavigationService from '~/utils/navigation';
 //component
@@ -21,6 +20,7 @@ const LoginScreen = props => {
   //selected field from global state
   const loading = useSelector(state => state.SignInReducer.loading);
   const error = useSelector(state => state.SignInReducer.error);
+  //local state
   const [isloading, setIsloading] = useState(false);
   //dispatch
   const dispatch = useDispatch();
