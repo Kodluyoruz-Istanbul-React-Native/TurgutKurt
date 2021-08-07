@@ -15,6 +15,8 @@ import Plus from './svg/header/Plus.svg';
 import human from './images/human.png';
 import post1 from './images/Posts/1.jpg';
 import post2 from './images/Posts/2.jpg';
+import loginlogo from './images/loginlogo.png';
+import background from './images/background.png';
 import DotsGray from './svg/post/DotsGray.svg';
 import EyesGray from './svg/post/EyesGray.svg';
 import Heart from './svg/post/Heart.svg';
@@ -45,5 +47,7 @@ export {
   Heart,
   HeartClicked,
   Message,
+  loginlogo,
   socialMediaAnimation,
+  background,
 };

@@ -1,5 +1,6 @@
 export const mainStack = {
   loading: 'Loading',
+  welcome: 'WelcomeScreen',
   login: 'LoginScreen',
   register: 'RegisterScreen',
   home_tab: 'HomeTab',
