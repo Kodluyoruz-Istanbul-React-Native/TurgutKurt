@@ -1,5 +1,13 @@
 import * as yup from 'yup';
-const LoginValidationSchema = yup.object().shape({
+const RegisterValidationSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, ({min}) => `En az ${min} karakter olmalıdır.`)
+    .required('İsim zorunlu'),
+  surname: yup
+    .string()
+    .min(3, ({min}) => `En az ${min} karakter olmalıdır.`)
+    .required('Soyisim zorunlu'),
   email: yup
     .string()
     .email('Lütfen geçeri e-mail girin.')
@@ -12,4 +20,4 @@ const LoginValidationSchema = yup.object().shape({
     .required('Şifre zorunlu'),
 });
 
-export {LoginValidationSchema};
+export {RegisterValidationSchema};
