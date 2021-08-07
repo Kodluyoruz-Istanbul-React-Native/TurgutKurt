@@ -1,15 +1,13 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
-import {loadingAnimation} from '~/assets';
-import {useNavigation} from '@react-navigation/native';
+import {loadingAnimation} from '~assets';
 import styles from './styles';
-import {mainStack} from '~/config/navigators';
+import {AuthControl} from '~utils';
 const Loading = () => {
-  const navigation = useNavigation();
   useEffect(() => {
     setTimeout(async () => {
-      navigation.navigate(mainStack.login);
+      await AuthControl.setupAuth();
     }, 3000);
   }, []);
   return (

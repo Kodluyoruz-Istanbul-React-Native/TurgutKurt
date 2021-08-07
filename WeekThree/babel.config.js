@@ -35,6 +35,10 @@ module.exports = {
             rootPathSuffix: 'src/screens/index',
           },
           {
+            rootPathPrefix: '~store',
+            rootPathSuffix: 'src/store/index',
+          },
+          {
             rootPathPrefix: '~utils',
             rootPathSuffix: 'src/utils/index',
           },

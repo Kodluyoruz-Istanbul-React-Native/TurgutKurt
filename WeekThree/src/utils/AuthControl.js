@@ -1,6 +1,7 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import store from '../store/index';
-import NavigationService from './navigation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {mainStack} from '~config';
+import store from '~store';
+import {NavigationService} from '~utils';
 const saveUserId = async (key, value) => {
   try {
     await AsyncStorage.setItem(
@@ -27,17 +28,11 @@ const setupAuth = async () => {
   try {
     const userId = await AsyncStorage.getItem('userId');
     console.log(userId);
-    /*if (!userId) {
-      NavigationService.navigate('LoginScreen');
-      return false;
-    }
-    if (id) {
-      store.getState().SignInReducer.userId = JSON.parse(userId);
-      NavigationService.push('MainScreen');
+    if (userId === null || userId === undefined) {
+      NavigationService.navigate(mainStack.login);
     } else {
-      store.getState().SignInReducer.userId = JSON.parse(userId);
-      NavigationService.push('Main');
-    }*/
+      NavigationService.navigate(mainStack.home_tab);
+    }
   } catch (e) {
     console.log(e);
   }

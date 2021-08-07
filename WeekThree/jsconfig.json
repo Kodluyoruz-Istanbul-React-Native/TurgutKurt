@@ -22,6 +22,9 @@
       "~schema": [
         "./src/schema/index"
       ],
+       "~store": [
+        "./src/store/index"
+      ],
       "~screens": [
         "./src/screens/index"
       ],
