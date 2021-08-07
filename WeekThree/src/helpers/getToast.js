@@ -7,7 +7,8 @@ const getToast = err => {
     text2: err ? err : 'Login done successfully.',
     visibilityTime: 2500,
     autoHide: true,
-    bottomOffset: 40,
+    topOffset: 10,
+    bottomOffset: 30,
   });
 };
 export {getToast};

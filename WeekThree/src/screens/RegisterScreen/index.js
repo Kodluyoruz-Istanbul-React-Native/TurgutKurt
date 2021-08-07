@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {
   TextInput,
   View,
@@ -8,13 +8,12 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import {RegisterValidationSchema} from '~/schema';
-import Toast from 'react-native-toast-message';
 import styles from './styles';
 import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
 import {SignUp} from '~/store/Actions';
-import NavigationService from '~/utils/navigation';
-import {mainStack} from '~/config/navigators';
+import {AuthControl} from '~utils';
+import {getToast} from '~helpers';
 //component
 const RegisterScreen = props => {
   //selected field from global state
@@ -26,37 +25,30 @@ const RegisterScreen = props => {
   const [isloading, setIsloading] = useState(false);
   //global store
   const store = useStore();
-  //toast ref
-  const modalToastRef = useRef();
-  //toast func
-  const globalToast = err => {
-    modalToastRef.current.show({
-      type: err ? 'error' : 'success',
-      position: err ? 'bottom' : 'top',
-      text1: err ? 'Error!' : 'Successful',
-      text2: err ? err : 'Register done successfully.',
-      visibilityTime: 2500,
-      autoHide: true,
-      bottomOffset: 40,
-    });
-  };
   //submit func
-  const _handleSubmit = async values => {
+  const _handleSubmit = async (values, {resetForm}) => {
     setIsloading(true);
+    //dispatch
     await dispatch(SignUp(values));
-    const e = store.getState().SignUpReducer.error;
-    globalToast(e);
-    //navigation
-    setTimeout(() => {
-      setIsloading(false);
-      NavigationService.navigate(mainStack.home_tab);
-    }, 2000);
+    //store get data
+    const {data, error} = store.getState().SignUpReducer;
+    if (data !== null) {
+      //save storage userId
+      await AuthControl.saveUserId('userId', data);
+      //get toast
+      getToast(error);
+      //all input value reset
+      resetForm();
+    } else {
+      getToast(error);
+    }
+    setIsloading(false);
   };
   return (
     <Formik
       validationSchema={RegisterValidationSchema}
       initialValues={{name: '', surname: '', email: '', password: ''}}
-      onSubmit={values => _handleSubmit(values)}>
+      onSubmit={(values, {resetForm}) => _handleSubmit(values, {resetForm})}>
       {({handleChange, handleBlur, handleSubmit, values, errors, isValid}) => (
         <View style={styles.Container}>
           <TextInput
@@ -153,7 +145,6 @@ const RegisterScreen = props => {
             onPress={() => props.navigation.goBack()}>
             <Text style={styles.RegisterText}>Login</Text>
           </TouchableOpacity>
-          <Toast ref={modalToastRef} />
         </View>
       )}
     </Formik>

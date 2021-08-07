@@ -10,13 +10,13 @@ export const SignUp = values => {
         values.email,
         values.password,
       );
-      const uid = response.user.uid;
       SET(refs.userinfo(uid), {
         name: values.name,
         surname: values.surname,
         email: values.email,
       });
-      await dispatch(fetchingSuccess(signUp.SIGN_UP_FULFILLED, response));
+      const uid = response.user.uid;
+      await dispatch(fetchingSuccess(signUp.SIGN_UP_FULFILLED, uid));
     } catch (error) {
       switch (error.code) {
         case 'auth/network-request-failed':
