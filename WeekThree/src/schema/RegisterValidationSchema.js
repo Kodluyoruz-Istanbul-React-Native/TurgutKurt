@@ -2,22 +2,22 @@ import * as yup from 'yup';
 const RegisterValidationSchema = yup.object().shape({
   name: yup
     .string()
-    .min(3, ({min}) => `En az ${min} karakter olmalıdır.`)
-    .required('İsim zorunlu'),
+    .min(3, ({min}) => `must be a minimum of ${min} characters.`)
+    .required('Name required'),
   surname: yup
     .string()
-    .min(3, ({min}) => `En az ${min} karakter olmalıdır.`)
-    .required('Soyisim zorunlu'),
+    .min(3, ({min}) => `must be a minimum of ${min} characters.`)
+    .required('Surname required'),
   email: yup
     .string()
-    .email('Lütfen geçeri e-mail girin.')
-    .max(40, ({max}) => `En fazla ${max} karakter olmalıdır.`)
-    .required('E-mail gerekli'),
+    .email('Please enter valid email.')
+    .max(40, ({max}) => `must be a maximum of ${max} characters.`)
+    .required('Email required'),
   password: yup
     .string()
-    .min(6, ({min}) => `En az ${min} karakter olmalıdır.`)
-    .max(25, ({max}) => `En fazla ${max} karakter olmalıdır.`)
-    .required('Şifre zorunlu'),
+    .min(6, ({min}) => `must be a minimum of ${min} characters.`)
+    .max(25, ({max}) => `must be a maximum of ${max} characters.`)
+    .required('Password required'),
 });
 
 export {RegisterValidationSchema};

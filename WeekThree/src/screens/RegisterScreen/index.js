@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {Formik} from 'formik';
-import {LoginValidationSchema} from '~/schema';
+import {RegisterValidationSchema} from '~/schema';
 import Toast from 'react-native-toast-message';
 import styles from './styles';
 import {colors} from '~/components/config';
@@ -47,7 +47,7 @@ const RegisterScreen = props => {
   };
   return (
     <Formik
-      validationSchema={LoginValidationSchema}
+      validationSchema={RegisterValidationSchema}
       initialValues={{name: '', surname: '', email: '', password: ''}}
       onSubmit={values => _handleSubmit(values)}>
       {({handleChange, handleBlur, handleSubmit, values, errors, isValid}) => (

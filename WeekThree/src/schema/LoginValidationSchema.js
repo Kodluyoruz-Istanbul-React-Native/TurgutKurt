@@ -2,14 +2,14 @@ import * as yup from 'yup';
 const LoginValidationSchema = yup.object().shape({
   email: yup
     .string()
-    .email('Lütfen geçeri e-mail girin.')
-    .max(40, ({max}) => `En fazla ${max} karakter olmalıdır.`)
-    .required('E-mail gerekli'),
+    .email('Please enter valid email.')
+    .max(40, ({max}) => `must be a maximum of ${max} characters.`)
+    .required('Email required'),
   password: yup
     .string()
-    .min(6, ({min}) => `En az ${min} karakter olmalıdır.`)
-    .max(25, ({max}) => `En fazla ${max} karakter olmalıdır.`)
-    .required('Şifre zorunlu'),
+    .min(6, ({min}) => `must be a minimum of ${min} characters.`)
+    .max(25, ({max}) => `must be a maximum of ${max} characters.`)
+    .required('Password required'),
 });
 
 export {LoginValidationSchema};
