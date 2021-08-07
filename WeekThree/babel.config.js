@@ -19,6 +19,14 @@ module.exports = {
             rootPathSuffix: 'src/components/index',
           },
           {
+            rootPathPrefix: '~config',
+            rootPathSuffix: 'src/config/index',
+          },
+          {
+            rootPathPrefix: '~helpers',
+            rootPathSuffix: 'src/helpers/index',
+          },
+          {
             rootPathPrefix: '~schema',
             rootPathSuffix: 'src/schema/index',
           },
