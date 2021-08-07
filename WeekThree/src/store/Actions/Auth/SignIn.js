@@ -9,6 +9,8 @@ export const SignIn = values => {
         values.email,
         values.password,
       );
+      console.log('response');
+      console.log(response);
       await dispatch(fetchingSuccess(signIn.SIGN_IN_FULFILLED, response));
     } catch (error) {
       switch (error.code) {
