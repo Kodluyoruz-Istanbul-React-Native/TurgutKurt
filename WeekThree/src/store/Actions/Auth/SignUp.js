@@ -1,15 +1,21 @@
 import auth from '@react-native-firebase/auth';
 import {fetchingRequest, fetchingSuccess, fetchingFailure} from '../index';
 import {signUp} from '~/store/Types';
-export const SignUp = (email, password) => {
+import {refs, SET} from '~/request';
+export const SignUp = values => {
   return async dispatch => {
     dispatch(fetchingRequest(signUp.SIGN_UP_PENDING));
     try {
       const response = await auth().createUserWithEmailAndPassword(
-        email,
-        password,
+        values.email,
+        values.password,
       );
-      debugger;
+      const uid = response.user.uid;
+      SET(refs.userinfo(uid), {
+        name: values.name,
+        surname: values.surname,
+        email: values.email,
+      });
       await dispatch(fetchingSuccess(signUp.SIGN_UP_FULFILLED, response));
     } catch (error) {
       console.log('catch girdim');

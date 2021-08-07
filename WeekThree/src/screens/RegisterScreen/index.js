@@ -14,7 +14,7 @@ import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
 import {SignUp} from '~/store/Actions';
 //component
-const LoginScreen = props => {
+const RegisterScreen = props => {
   //selected field from global state
   const loading = useSelector(state => state.SignUpReducer.loading);
   const error = useSelector(state => state.SignUpReducer.err);
@@ -48,13 +48,49 @@ const LoginScreen = props => {
   return (
     <Formik
       validationSchema={LoginValidationSchema}
-      initialValues={{email: '', password: ''}}
+      initialValues={{name: '', surname: '', email: '', password: ''}}
       onSubmit={values => _handleSubmit(values)}>
       {({handleChange, handleBlur, handleSubmit, values, errors, isValid}) => (
         <View style={styles.Container}>
           <TextInput
+            name="name"
+            placeholder="İsim giriniz."
+            style={[
+              styles.textInput,
+              values.email === ''
+                ? styles.textInput
+                : errors.email
+                ? styles.textInputExStyle1
+                : styles.textInputExStyle2,
+            ]}
+            onChangeText={handleChange('name')}
+            onBlur={handleBlur('name')}
+            value={values.name}
+          />
+          {errors.name && (
+            <Text style={styles.ErrorTextStyle}>{errors.name}</Text>
+          )}
+          <TextInput
+            name="surname"
+            placeholder="Soyisim giriniz."
+            style={[
+              styles.textInput,
+              values.email === ''
+                ? styles.textInput
+                : errors.email
+                ? styles.textInputExStyle1
+                : styles.textInputExStyle2,
+            ]}
+            onChangeText={handleChange('surname')}
+            onBlur={handleBlur('surname')}
+            value={values.surname}
+          />
+          {errors.surname && (
+            <Text style={styles.ErrorTextStyle}>{errors.surname}</Text>
+          )}
+          <TextInput
             name="email"
-            placeholder="E-mail"
+            placeholder="Email adresinizi giriniz."
             style={[
               styles.textInput,
               values.email === ''
@@ -73,7 +109,7 @@ const LoginScreen = props => {
           )}
           <TextInput
             name="password"
-            placeholder="Şifre"
+            placeholder="Şifrenizi giriniz."
             style={[
               styles.textInput,
               values.password === ''
@@ -111,4 +147,4 @@ const LoginScreen = props => {
     </Formik>
   );
 };
-export default LoginScreen;
+export default RegisterScreen;

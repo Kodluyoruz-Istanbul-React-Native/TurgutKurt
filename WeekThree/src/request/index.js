@@ -1,3 +1,1 @@
-import firebase from './firebase';
-
-export {firebase};
+export * from './firebase';

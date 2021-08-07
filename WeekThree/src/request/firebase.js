@@ -9,9 +9,9 @@ export const refs = {
   userinfo: uid => DB.ref(`/USERS/${uid}/info`),
 };
 
-export const SIGNINWITHEMAIL = (eposta, parola) =>
+export const SIGNUP = values =>
   new Promise((resolve, reject) => {
-    AUTH.createUserWithEmailAndPassword(eposta, parola)
+    AUTH.createUserWithEmailAndPassword(values.email, values.password)
       .then(d => {
         const uid = d.user.uid;
 
