@@ -1,7 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import {fetchingRequest, fetchingSuccess, fetchingFailure} from '../index';
 import {signIn} from '~/store/Types';
-import {refs, SET} from '~/request';
 export const SignIn = values => {
   return async dispatch => {
     dispatch(fetchingRequest(signIn.SIGN_IN_PENDING));
@@ -10,12 +9,8 @@ export const SignIn = values => {
         values.email,
         values.password,
       );
-      console.log('SignIn response');
-      console.log(response);
-
       await dispatch(fetchingSuccess(signIn.SIGN_IN_FULFILLED, response));
     } catch (error) {
-      console.log('catch girdim');
       switch (error.code) {
         case 'auth/network-request-failed':
           return dispatch(

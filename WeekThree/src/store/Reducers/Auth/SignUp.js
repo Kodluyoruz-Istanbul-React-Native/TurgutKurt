@@ -9,7 +9,6 @@ export default function SignUp(state = initialState, action) {
       return {...state, loading: false, data: payload, error: null};
     case signUp.SIGN_UP_REJECTED:
       debugger;
-      console.log('SIGN_UP_REJECTED girdim');
       return {
         ...state,
         loading: false,

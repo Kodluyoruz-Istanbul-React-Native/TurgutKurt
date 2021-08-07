@@ -18,25 +18,27 @@ export const SignUp = values => {
       });
       await dispatch(fetchingSuccess(signUp.SIGN_UP_FULFILLED, response));
     } catch (error) {
-      console.log('catch girdim');
       switch (error.code) {
         case 'auth/network-request-failed':
           return dispatch(
             fetchingFailure(
               signUp.SIGN_UP_REJECTED,
-              'Ağ bağlantı hatası (zaman aşımı, kesintiye uğramış bağlantı veya erişilemeyen ana bilgisayar gibi)',
+              'Network connection error (such as timeout, interrupted connection, or host unreachable)',
             ),
           );
         case 'auth/email-already-in-use':
           return dispatch(
             fetchingFailure(
               signUp.SIGN_UP_REJECTED,
-              'Bu e-mail adresi kullanımda!',
+              'That email address is already in use!',
             ),
           );
         case 'auth/invalid-email':
           return dispatch(
-            fetchingFailure(signUp.SIGN_UP_REJECTED, 'Geçersiz e-mail adresi!'),
+            fetchingFailure(
+              signUp.SIGN_UP_REJECTED,
+              'That email address is invalid!',
+            ),
           );
         default:
           return dispatch(

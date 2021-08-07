@@ -9,7 +9,6 @@ export default function SignIn(state = initialState, action) {
       return {...state, loading: false, data: payload, error: null};
     case signIn.SIGN_IN_REJECTED:
       debugger;
-      console.log('SIGN_UP_REJECTED girdim');
       return {
         ...state,
         loading: false,
