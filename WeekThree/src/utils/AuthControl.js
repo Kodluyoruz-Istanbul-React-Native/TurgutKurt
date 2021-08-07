@@ -34,9 +34,9 @@ const setupAuth = async () => {
       userId === 'null' ||
       userId === 'undefined'
     ) {
-      NavigationService.navigate(mainStack.login);
+      NavigationService.replace(mainStack.login);
     } else {
-      NavigationService.navigate(mainStack.home_tab);
+      NavigationService.replace(mainStack.home_tab);
     }
   } catch (e) {
     console.log(e);

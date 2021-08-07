@@ -33,10 +33,8 @@ const ProfileScreen = () => {
       {isloading ? (
         <ActivityIndicator size="large" color={colors.MainPink} />
       ) : (
-        <TouchableOpacity style={styles.Button}>
-          <Text style={styles.ButtonText} onPress={logOut}>
-            SignOut
-          </Text>
+        <TouchableOpacity style={styles.Button} onPress={logOut}>
+          <Text style={styles.ButtonText}>SignOut</Text>
         </TouchableOpacity>
       )}
     </View>
