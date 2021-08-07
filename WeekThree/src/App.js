@@ -5,14 +5,14 @@ import {SafeAreaView} from 'react-native';
 import store from './store';
 import {Provider} from 'react-redux';
 import Toast from 'react-native-toast-message';
-import {LoginScreen} from './screens';
+import NavigationService from '~/utils/navigation';
 const App = () => {
   return (
     <>
       <Provider store={store}>
-        <NavigationContainer>
+        <NavigationContainer ref={NavigationService.navigationRef}>
           <SafeAreaView style={{flex: 1}}>
-            <LoginScreen />
+            <MainStack />
           </SafeAreaView>
           <Toast ref={ref => Toast.setRef(ref)} />
         </NavigationContainer>

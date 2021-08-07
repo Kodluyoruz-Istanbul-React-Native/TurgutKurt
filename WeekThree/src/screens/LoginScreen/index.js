@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   TextInput,
   View,
@@ -13,11 +13,15 @@ import styles from './styles';
 import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
 import {SignIn} from '~/store/Actions';
+import {useNavigation} from '@react-navigation/native';
+import {mainStack} from '~/config/navigators';
+import NavigationService from '~/utils/navigation';
 //component
 const LoginScreen = props => {
   //selected field from global state
   const loading = useSelector(state => state.SignInReducer.loading);
   const error = useSelector(state => state.SignInReducer.error);
+  const [isloading, setIsloading] = useState(false);
   //dispatch
   const dispatch = useDispatch();
   //global store
@@ -26,9 +30,6 @@ const LoginScreen = props => {
   const modalToastRef = useRef();
   //toast func
   const globalToast = err => {
-    console.log('globalToast girdi');
-    console.log(err);
-    debugger;
     modalToastRef.current.show({
       type: err ? 'error' : 'success',
       position: err ? 'bottom' : 'top',
@@ -41,9 +42,15 @@ const LoginScreen = props => {
   };
   //submit func
   const _handleSubmit = async values => {
+    setIsloading(true);
     await dispatch(SignIn(values));
     const e = store.getState().SignInReducer.error;
     globalToast(e);
+    //navigation
+    setTimeout(() => {
+      setIsloading(false);
+      NavigationService.navigate(mainStack.home_tab);
+    }, 2000);
   };
   return (
     <Formik
@@ -90,7 +97,7 @@ const LoginScreen = props => {
           {errors.password && (
             <Text style={styles.ErrorTextStyle}>{errors.password}</Text>
           )}
-          {loading ? (
+          {isloading ? (
             <ActivityIndicator size="large" color={colors.MainPink} />
           ) : (
             <TouchableOpacity
@@ -105,6 +112,11 @@ const LoginScreen = props => {
               <Text style={styles.ButtonTextStyle}>Login</Text>
             </TouchableOpacity>
           )}
+          <TouchableOpacity
+            style={styles.RegisterButton}
+            onPress={() => props.navigation.navigate(mainStack.register)}>
+            <Text style={styles.RegisterText}>Register</Text>
+          </TouchableOpacity>
           <Toast ref={modalToastRef} />
         </View>
       )}

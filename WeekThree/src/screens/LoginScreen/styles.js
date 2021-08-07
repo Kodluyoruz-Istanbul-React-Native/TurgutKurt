@@ -36,5 +36,13 @@ const styles = StyleSheet.create({
     fontSize: fontSize(16),
     fontWeight: 'bold',
   },
+  RegisterButton: {
+    width: calcWidth(25),
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+    paddingVertical: 2,
+    marginRight: 20,
+  },
+  RegisterText: {color: colors.MainPink, fontSize: fontSize(12)},
 });
 export default styles;

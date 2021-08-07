@@ -26,9 +26,6 @@ const RegisterScreen = props => {
   const modalToastRef = useRef();
   //toast func
   const globalToast = err => {
-    console.log('globalToast girdi');
-    console.log(err);
-    debugger;
     modalToastRef.current.show({
       type: err ? 'error' : 'success',
       position: err ? 'bottom' : 'top',
@@ -141,6 +138,11 @@ const RegisterScreen = props => {
               <Text style={styles.ButtonTextStyle}>Register</Text>
             </TouchableOpacity>
           )}
+          <TouchableOpacity
+            style={styles.RegisterButton}
+            onPress={() => props.navigation.goBack()}>
+            <Text style={styles.RegisterText}>Login</Text>
+          </TouchableOpacity>
           <Toast ref={modalToastRef} />
         </View>
       )}
