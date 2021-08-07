@@ -8,7 +8,6 @@ export default function SignIn(state = initialState, action) {
     case signIn.SIGN_IN_FULFILLED:
       return {...state, loading: false, data: payload, error: null};
     case signIn.SIGN_IN_REJECTED:
-      debugger;
       return {
         ...state,
         loading: false,

@@ -1,13 +1,13 @@
 import {initialState} from '~/store/initialState';
-import {signUp} from '~/store/Types';
-export default function SignUp(state = initialState, action) {
+import {signOut} from '~/store/Types';
+export default function SignOut(state = initialState, action) {
   const {type, payload} = action;
   switch (type) {
-    case signUp.SIGN_UP_PENDING:
+    case signOut.SIGN_OUT_PENDING:
       return {...state, loading: true, data: null, error: null};
-    case signUp.SIGN_UP_FULFILLED:
+    case signOut.SIGN_OUT_FULFILLED:
       return {...state, loading: false, data: payload, error: null};
-    case signUp.SIGN_UP_REJECTED:
+    case signOut.SIGN_OUT_REJECTED:
       return {
         ...state,
         loading: false,

@@ -12,4 +12,5 @@ export default {
 };
 import {SignUp} from './Auth/SignUp';
 import {SignIn} from './Auth/SignIn';
-export {SignUp, SignIn};
+import {SignOut} from './Auth/SignOut';
+export {SignUp, SignIn, SignOut};
