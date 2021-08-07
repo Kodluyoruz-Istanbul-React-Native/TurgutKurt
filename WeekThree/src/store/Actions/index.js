@@ -11,4 +11,5 @@ export default {
   fetchingFailure,
 };
 import {SignUp} from './Auth/SignUp';
-export {SignUp};
+import {SignIn} from './Auth/SignIn';
+export {SignUp, SignIn};
