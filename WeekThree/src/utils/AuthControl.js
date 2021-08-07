@@ -28,7 +28,12 @@ const setupAuth = async () => {
   try {
     const userId = await AsyncStorage.getItem('userId');
     console.log(userId);
-    if (userId === null || userId === undefined) {
+    if (
+      userId === null ||
+      userId === undefined ||
+      userId === 'null' ||
+      userId === 'undefined'
+    ) {
       NavigationService.navigate(mainStack.login);
     } else {
       NavigationService.navigate(mainStack.home_tab);

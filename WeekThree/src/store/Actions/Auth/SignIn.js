@@ -9,9 +9,8 @@ export const SignIn = values => {
         values.email,
         values.password,
       );
-      console.log('response');
-      console.log(response);
-      await dispatch(fetchingSuccess(signIn.SIGN_IN_FULFILLED, response));
+      const uid = response.user.uid;
+      await dispatch(fetchingSuccess(signIn.SIGN_IN_FULFILLED, uid));
     } catch (error) {
       switch (error.code) {
         case 'auth/network-request-failed':
