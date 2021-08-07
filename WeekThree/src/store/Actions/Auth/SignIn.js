@@ -21,19 +21,22 @@ export const SignIn = values => {
           return dispatch(
             fetchingFailure(
               signIn.SIGN_IN_REJECTED,
-              'Ağ bağlantı hatası (zaman aşımı, kesintiye uğramış bağlantı veya erişilemeyen ana bilgisayar gibi)',
+              'Network connection error (such as timeout, interrupted connection, or host unreachable)',
             ),
           );
         case 'auth/email-already-in-use':
           return dispatch(
             fetchingFailure(
               signIn.SIGN_IN_REJECTED,
-              'Bu e-mail adresi kullanımda!',
+              'That email address is already in use!',
             ),
           );
         case 'auth/invalid-email':
           return dispatch(
-            fetchingFailure(signIn.SIGN_IN_REJECTED, 'Geçersiz e-mail adresi!'),
+            fetchingFailure(
+              signIn.SIGN_IN_REJECTED,
+              'That email address is invalid!',
+            ),
           );
         default:
           return dispatch(

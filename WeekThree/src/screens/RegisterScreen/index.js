@@ -17,7 +17,7 @@ import {SignUp} from '~/store/Actions';
 const RegisterScreen = props => {
   //selected field from global state
   const loading = useSelector(state => state.SignUpReducer.loading);
-  const error = useSelector(state => state.SignUpReducer.err);
+  const error = useSelector(state => state.SignUpReducer.error);
   //dispatch
   const dispatch = useDispatch();
   //global store

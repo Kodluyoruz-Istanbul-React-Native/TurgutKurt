@@ -12,12 +12,12 @@ import Toast from 'react-native-toast-message';
 import styles from './styles';
 import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
-import {SignUp} from '~/store/Actions';
+import {SignIn} from '~/store/Actions';
 //component
 const LoginScreen = props => {
   //selected field from global state
-  const loading = useSelector(state => state.SignUpReducer.loading);
-  const error = useSelector(state => state.SignUpReducer.err);
+  const loading = useSelector(state => state.SignInReducer.loading);
+  const error = useSelector(state => state.SignInReducer.error);
   //dispatch
   const dispatch = useDispatch();
   //global store
@@ -32,8 +32,8 @@ const LoginScreen = props => {
     modalToastRef.current.show({
       type: err ? 'error' : 'success',
       position: err ? 'bottom' : 'top',
-      text1: err ? 'Hata' : 'Başarılı',
-      text2: err ? err : 'Kayıt işlemi başarıyla gerçekleştirildi.',
+      text1: err ? 'Error!' : 'Successful',
+      text2: err ? err : 'Login done successfully.',
       visibilityTime: 2500,
       autoHide: true,
       bottomOffset: 40,
@@ -41,8 +41,8 @@ const LoginScreen = props => {
   };
   //submit func
   const _handleSubmit = async values => {
-    await dispatch(SignUp(values));
-    const e = store.getState().SignUpReducer.error;
+    await dispatch(SignIn(values));
+    const e = store.getState().SignInReducer.error;
     globalToast(e);
   };
   return (
@@ -54,7 +54,7 @@ const LoginScreen = props => {
         <View style={styles.Container}>
           <TextInput
             name="email"
-            placeholder="E-mail"
+            placeholder="Enter your email"
             style={[
               styles.textInput,
               values.email === ''
@@ -73,7 +73,7 @@ const LoginScreen = props => {
           )}
           <TextInput
             name="password"
-            placeholder="Şifre"
+            placeholder="Enter your password"
             style={[
               styles.textInput,
               values.password === ''
@@ -102,7 +102,7 @@ const LoginScreen = props => {
               ]}
               onPress={handleSubmit}
               disabled={!isValid}>
-              <Text style={styles.ButtonTextStyle}>Giriş Yap</Text>
+              <Text style={styles.ButtonTextStyle}>Login</Text>
             </TouchableOpacity>
           )}
           <Toast ref={modalToastRef} />
