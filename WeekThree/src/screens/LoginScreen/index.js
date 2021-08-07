@@ -12,8 +12,7 @@ import Toast from 'react-native-toast-message';
 import styles from './styles';
 import {colors} from '~/components/config';
 import {useSelector, useDispatch, useStore} from 'react-redux';
-import {SignUp} from '~/store/Actions/Auth/SignUp';
-
+import {SignUp} from '~/store/Actions';
 //component
 const LoginScreen = props => {
   //selected field from global state
@@ -107,7 +106,6 @@ const LoginScreen = props => {
             </TouchableOpacity>
           )}
           <Toast ref={modalToastRef} />
-          <Text style={{borderWidth: 3, color: 'red'}}>{error}</Text>
         </View>
       )}
     </Formik>

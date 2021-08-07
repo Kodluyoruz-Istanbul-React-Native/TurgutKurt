@@ -10,3 +10,5 @@ export default {
   fetchingSuccess,
   fetchingFailure,
 };
+import {SignUp} from './Auth/SignUp';
+export {SignUp};
