@@ -1,42 +1,41 @@
 import auth from '@react-native-firebase/auth';
-import {SIGN_UP_PENDING, SIGN_UP_FULFILLED, SIGN_UP_REJECTED} from './types';
+import {fetchingRequest, fetchingSuccess, fetchingFailure} from '../index';
+import {signUp} from '~/store/Types';
 export const SignUp = (email, password) => {
   return async dispatch => {
-    dispatch({type: SIGN_UP_PENDING});
+    dispatch(fetchingRequest(signUp.SIGN_UP_PENDING));
     try {
       const response = await auth().createUserWithEmailAndPassword(
         email,
         password,
       );
-      //const payload = response.data;
-      const payload = {...response};
-      console.log('payload');
-      console.log(payload);
-      dispatch({type: SIGN_UP_FULFILLED, payload: response});
+      debugger;
+      await dispatch(fetchingSuccess(signUp.SIGN_UP_FULFILLED, response));
     } catch (error) {
       console.log('catch girdim');
       switch (error.code) {
         case 'auth/network-request-failed':
-          return dispatch({
-            type: SIGN_UP_REJECTED,
-            payload:
+          return dispatch(
+            fetchingFailure(
+              signUp.SIGN_UP_REJECTED,
               'Ağ bağlantı hatası (zaman aşımı, kesintiye uğramış bağlantı veya erişilemeyen ana bilgisayar gibi)',
-          });
+            ),
+          );
         case 'auth/email-already-in-use':
-          return dispatch({
-            type: SIGN_UP_REJECTED,
-            payload: 'Bu e-mail adresi kullanımda!',
-          });
+          return dispatch(
+            fetchingFailure(
+              signUp.SIGN_UP_REJECTED,
+              'Bu e-mail adresi kullanımda!',
+            ),
+          );
         case 'auth/invalid-email':
-          return dispatch({
-            type: SIGN_UP_REJECTED,
-            payload: 'Geçersiz e-mail adresi!',
-          });
+          return dispatch(
+            fetchingFailure(signUp.SIGN_UP_REJECTED, 'Geçersiz e-mail adresi!'),
+          );
         default:
-          return dispatch({
-            type: SIGN_UP_REJECTED,
-            payload: 'Bir şeyler ters gitti',
-          });
+          return dispatch(
+            fetchingFailure(signUp.SIGN_UP_REJECTED, 'Bir şeyler ters gitti'),
+          );
       }
     }
   };
