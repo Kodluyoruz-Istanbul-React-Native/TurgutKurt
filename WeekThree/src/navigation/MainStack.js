@@ -2,7 +2,7 @@ import React from 'react';
 import {mainStack} from '~/config/navigators';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeTabs from './HomeTabs';
-import {Loading, LoginScreen} from '~/screens';
+import {Loading, LoginScreen, RegisterScreen} from '~/screens';
 const Stack = createStackNavigator();
 const MainStack = () => {
   return (
@@ -11,6 +11,7 @@ const MainStack = () => {
       screenOptions={{gestureEnabled: false, headerShown: false}}>
       <Stack.Screen name={mainStack.loading} component={Loading} />
       <Stack.Screen name={mainStack.login} component={LoginScreen} />
+      <Stack.Screen name={mainStack.register} component={RegisterScreen} />
       <Stack.Screen name={mainStack.home_tab} component={HomeTabs} />
     </Stack.Navigator>
   );

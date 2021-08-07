@@ -54,7 +54,7 @@ const RegisterScreen = props => {
         <View style={styles.Container}>
           <TextInput
             name="name"
-            placeholder="İsim giriniz."
+            placeholder="Enter your name"
             style={[
               styles.textInput,
               values.email === ''
@@ -72,7 +72,7 @@ const RegisterScreen = props => {
           )}
           <TextInput
             name="surname"
-            placeholder="Soyisim giriniz."
+            placeholder="Enter your surname"
             style={[
               styles.textInput,
               values.email === ''
@@ -90,7 +90,7 @@ const RegisterScreen = props => {
           )}
           <TextInput
             name="email"
-            placeholder="Email adresinizi giriniz."
+            placeholder="Enter your email"
             style={[
               styles.textInput,
               values.email === ''
@@ -109,7 +109,7 @@ const RegisterScreen = props => {
           )}
           <TextInput
             name="password"
-            placeholder="Şifrenizi giriniz."
+            placeholder="Enter your password"
             style={[
               styles.textInput,
               values.password === ''
@@ -138,7 +138,7 @@ const RegisterScreen = props => {
               ]}
               onPress={handleSubmit}
               disabled={!isValid}>
-              <Text style={styles.ButtonTextStyle}>Giriş Yap</Text>
+              <Text style={styles.ButtonTextStyle}>Register</Text>
             </TouchableOpacity>
           )}
           <Toast ref={modalToastRef} />
