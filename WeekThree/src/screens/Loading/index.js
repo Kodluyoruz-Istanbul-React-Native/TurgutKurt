@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
-import {loadingAnimation} from '~assets';
+import {socialMediaAnimation} from '~assets';
 import styles from './styles';
 import {AuthControl} from '~utils';
 const Loading = () => {
@@ -11,8 +11,13 @@ const Loading = () => {
     }, 3000);
   }, []);
   return (
-    <View style={styles.wrapper}>
-      <LottieView source={loadingAnimation} autoPlay loop />
+    <View style={styles.Container}>
+      <LottieView
+        style={styles.LottieStyle}
+        source={socialMediaAnimation}
+        autoPlay
+        loop
+      />
     </View>
   );
 };

@@ -20,7 +20,7 @@ import EyesGray from './svg/post/EyesGray.svg';
 import Heart from './svg/post/Heart.svg';
 import HeartClicked from './svg/post/HeartClicked.svg';
 import Message from './svg/post/Message.svg';
-import loginlogo from './images/loginlogo.png';
+import socialMediaAnimation from './lottie/social-media.json';
 
 export {
   loadingAnimation,
@@ -45,4 +45,5 @@ export {
   Heart,
   HeartClicked,
   Message,
+  socialMediaAnimation,
 };
